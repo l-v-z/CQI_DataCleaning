@@ -16,8 +16,9 @@ DROP COLUMN ICO_Number
 
 --replacing some values in the in-country partner column for later use in tableau
 
-UPDATE coffee_data SET In_Country_Partner = REPLACE(In_Country_Partner, 'Coffee Ass', 'Specialty Coffee Association')
-UPDATE coffee_data SET In_Country_Partner = REPLACE(In_Country_Partner, 'Specialty Coffee Association o', 'Specialty Coffee Association')
+UPDATE coffee_data SET In_Country_Partner = CASE WHEN In_Country_Partner LIKE '%Specialty%'
+                                            THEN 'Specialty Coffee Association'
+END
 
 
 
